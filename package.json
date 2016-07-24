@@ -1,0 +1,60 @@
+{
+  "name": "amma-cart-api",
+  "version": "0.0.1",
+  "description": "Amma cart",
+  "main": "index.js",
+  "author": "Prashanth Pratapagiri <prashanth.p@outlook.com>",
+  "license": "MIT",
+  "keywords": [
+    "hapi",
+    "node",
+    "amma",
+    "amma-cart-api"
+  ],
+  "typescript": {
+    "definition": "amma-cart-api.d.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prashanthjs/amma-cart-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/prashanthjs/amma-cart-api/issues"
+  },
+  "scripts": {
+    "test": "lab -t 100 -v -C"
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "bcrypt": "^0.8.7",
+    "boom": "^3.2.2",
+    "deepmerge": "^0.2.10",
+    "fs-plus": "^2.9.1",
+    "glue": "^3.3.0",
+    "good": "^7.0.1",
+    "good-console": "^6.1.2",
+    "good-squeeze": "^4.0.0",
+    "halacious": "^3.5.4",
+    "hapi": "^13.4.1",
+    "hapi-auth-jwt2": "^7.0.1",
+    "hapi-to": "^1.0.0",
+    "hoek": "^4.0.1",
+    "inert": "^4.0.1",
+    "joi": "^8.4.2",
+    "jsonwebtoken": "^7.0.1",
+    "lodash": "^4.13.1",
+    "mongoose": "^4.5.3",
+    "mongoose-timestamp": "^0.6.0",
+    "mongoose-validator": "^1.2.5",
+    "node-uuid": "^1.4.7",
+    "object-path": "^0.11.1"
+  },
+  "devDependencies": {
+    "code": "^3.0.1",
+    "gulp": "^3.9.1",
+    "hapi": "^13.4.1",
+    "lab": "^10.8.2",
+    "sinon": "^1.17.4",
+    "tsd": "^0.6.5"
+  }
+}
