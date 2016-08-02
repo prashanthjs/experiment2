@@ -5,10 +5,13 @@ const DeepMerge = require('deepmerge');
 const _ = require('lodash');
 const Path = require('path');
 const Fs = require('fs');
+const Util = require('util');
 class Loader {
     init(modules, next) {
         let config = this.loadConfig(modules);
+        config = this.triggerMergedConfig(modules, config);
         config = Joi.attempt(config, Schema.default.ConfigSchema, 'Invalid config');
+        Fs.writeFile(__dirname + '/../logs/config.log', Util.inspect(config, { depth: null }), 'utf-8');
         this.loadAppConfig(config);
         this.serviceLoader.loadServices(config.services, (err) => {
             this.routeLoader.loadRoutes(config.routes);
@@ -19,15 +22,31 @@ class Loader {
         let config = {};
         _.forEach(modules, (modulePath, key) => {
             try {
-                const configPath = Path.join(modulePath, 'config.js');
-                const stats = Fs.lstatSync(configPath);
-                if (stats.isFile()) {
-                    config = this.deepMerge(config, require(configPath));
+                const configPath = Path.join(modulePath, 'module');
+                const Module = require(configPath);
+                if (Module.getConfig) {
+                    config = this.deepMerge(config, Module.getConfig());
+                }
+            }
+            catch (e) {
+                this.server.log(e);
+                this.server.log('info', key + ': Module does not exist' + modulePath);
+            }
+        });
+        return config;
+    }
+    triggerMergedConfig(modules, config) {
+        _.forEach(modules, (modulePath, key) => {
+            try {
+                const configPath = Path.join(modulePath, 'module');
+                const Module = require(configPath);
+                if (Module.postConfig) {
+                    config = Module.postConfig(config);
                 }
             }
             catch (e) {
                 console.log(e);
-                this.server.log('info', key + ': config file does not exist' + modulePath);
+                this.server.log('info', key + ': Module does not exist' + modulePath);
             }
         });
         return config;

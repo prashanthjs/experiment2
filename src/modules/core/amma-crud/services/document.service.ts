@@ -5,7 +5,7 @@ import Mongoose = require('mongoose');
 import DbParser = require('../../amma-db-parser/services/db.parser');
 
 export interface ICallback {
-    (err?:any, results?:any): any;
+    (err?:any, results?:any):any;
 }
 
 export interface IDocumentService {
@@ -22,7 +22,6 @@ export interface IDocumentService {
     findByIdAndRemove(id:string, next:ICallback):void;
     setServer(server:Hapi.Server);
     setCollectionName(collectionName:string);
-    setSchema(schema:Mongoose.Schema);
     setDbParser(dbParser:DbParser.IDbParser);
 }
 
@@ -30,18 +29,12 @@ class DocumentService implements IDocumentService {
 
     protected model:Mongoose.Model<Mongoose.Document>;
     protected collectionName:string;
-    protected schema:Mongoose.Schema;
     protected server:Hapi.Server;
     protected dbParser:DbParser.IDbParser;
 
     getModel():Mongoose.Model<Mongoose.Document> {
         if (!this.model) {
-            const names = Mongoose.modelNames();
-            if (names.indexOf(this.collectionName) == -1) {
-                this.model = Mongoose.model<Mongoose.Document>(this.collectionName, this.schema);
-            } else {
-                this.model = Mongoose.model<Mongoose.Document>(this.collectionName);
-            }
+            this.model = Mongoose.model<Mongoose.Document>(this.collectionName);
         }
         return this.model;
     }
@@ -83,12 +76,8 @@ class DocumentService implements IDocumentService {
         this.server = server;
     }
 
-    setCollectionName(collectionName:string):void {
+    setCollectionName(collectionName:string) {
         this.collectionName = collectionName;
-    }
-
-    setSchema(schema:Mongoose.Schema):void {
-        this.schema = schema;
     }
 
     setDbParser(dbParser:DbParser.IDbParser):void {

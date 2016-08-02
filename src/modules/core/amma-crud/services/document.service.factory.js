@@ -7,12 +7,11 @@ class DocumentServiceFactory {
     getDbParser(schema) {
         return this.server.settings.app.services.dbParserFactory.getDbParser(schema);
     }
-    getDocumentService(collectionName, schema) {
+    getDocumentService(collectionName) {
         const documentService = new DocumentService.default();
         documentService.setServer(this.server);
         documentService.setCollectionName(collectionName);
-        documentService.setSchema(schema);
-        const dbParser = this.getDbParser(schema);
+        const dbParser = this.getDbParser(documentService.getModel().schema);
         documentService.setDbParser(dbParser);
         return documentService;
     }

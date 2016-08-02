@@ -5,7 +5,7 @@ import DbParser = require('../../amma-db-parser/services/db.parser');
 
 export interface IDocumentServiceFactory {
     setServer(server:Hapi.Server):void;
-    getDocumentService(collectionName:string, schema:Mongoose.Schema): DocumentService.IDocumentService;
+    getDocumentService(collectionName:string): DocumentService.IDocumentService;
 }
 
 class DocumentServiceFactory implements IDocumentServiceFactory {
@@ -20,12 +20,11 @@ class DocumentServiceFactory implements IDocumentServiceFactory {
         return this.server.settings.app.services.dbParserFactory.getDbParser(schema);
     }
 
-    getDocumentService(collectionName:string, schema:Mongoose.Schema):DocumentService.IDocumentService {
+    getDocumentService(collectionName:string):DocumentService.IDocumentService {
         const documentService = new DocumentService.default();
         documentService.setServer(this.server);
         documentService.setCollectionName(collectionName);
-        documentService.setSchema(schema);
-        const dbParser = this.getDbParser(schema);
+        const dbParser = this.getDbParser(documentService.getModel().schema);
         documentService.setDbParser(dbParser);
         return documentService;
     }

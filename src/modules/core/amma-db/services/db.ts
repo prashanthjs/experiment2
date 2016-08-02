@@ -1,6 +1,9 @@
 import Mongoose = require('mongoose');
 import Hapi = require('hapi');
 import Joi = require('joi');
+import _ = require('lodash');
+import Timestamps = require('mongoose-timestamp');
+import ObjectPath = require('object-path');
 
 export interface IDbOptions {
     uri:string,
@@ -24,6 +27,11 @@ class Db implements IDb {
         return this.server.settings.app.db;
     }
 
+    getSchema():IDbOptions {
+        const options:any = this.getOptions();
+        return options.schema;
+    }
+
     setServer = (server:Hapi.Server) => {
         this.server = server;
     };
@@ -36,13 +44,15 @@ class Db implements IDb {
         let options = this.getOptions();
         options = Joi.attempt(options, Joi.object({
             uri: Joi.string().required(),
-            options: Joi.object()
+            options: Joi.object(),
+            schema: Joi.object()
         }).required(), 'Invalid DB config');
         const db = Mongoose.connect(options.uri, options.options, (err:any) => {
             if (err) {
                 this.server.log('error', 'Could not connect to MongoDB! ' + options.uri + '\n');
                 next(err);
             } else {
+                this.loadModels();
                 this.server.log('success', 'Connected to MongoDB ' + options.uri + '\n');
                 next();
             }
@@ -50,9 +60,24 @@ class Db implements IDb {
         this.server.settings.app.dbInstance = db;
     };
 
+    loadModels = () => {
+        _.forEach(this.getSchema(), (schema:Object, key:string)=> {
+            this.addModel(schema, key);
+        });
+    };
+
+    private addModel(schemaJson, collectionName) {
+        const schema = new Mongoose.Schema(schemaJson);
+        schema.plugin(Timestamps);
+        if (!ObjectPath.has(this.server.settings.app,'model')) {
+            this.server.settings.app.model = {};
+        }
+        this.server.settings.app.model[collectionName] = Mongoose.model(collectionName, schema);
+    }
+
     disconnectDb = (next:(err?:any, result?:any) => any):any => {
         Mongoose.disconnect((err) => {
-            this.server.log('info','Disconnected from MongoDB.');
+            this.server.log('info', 'Disconnected from MongoDB.');
             return next();
         });
     };

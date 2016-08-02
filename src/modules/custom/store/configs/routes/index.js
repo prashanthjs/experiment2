@@ -1,6 +1,6 @@
 "use strict";
-const StoreSchema = require('../schema/store.schema');
 const StorePayloadValidator = require('./payload.validation');
+const StoreCollectionName = 'store';
 module.exports = {
     getAllStores: {
         method: 'GET',
@@ -8,8 +8,7 @@ module.exports = {
         config: {
             handler: {
                 crudGetAll: {
-                    collectionName: StoreSchema.collectionName,
-                    schema: StoreSchema.schema,
+                    collectionName: StoreCollectionName,
                 }
             },
             plugins: {
@@ -30,8 +29,7 @@ module.exports = {
         config: {
             handler: {
                 crudGet: {
-                    collectionName: StoreSchema.collectionName,
-                    schema: StoreSchema.schema,
+                    collectionName: StoreCollectionName,
                     idPath: 'params.id',
                     notFoundMessage: 'Store not found'
                 }
@@ -47,8 +45,7 @@ module.exports = {
             ],
             handler: {
                 crudCreate: {
-                    collectionName: StoreSchema.collectionName,
-                    schema: StoreSchema.schema,
+                    collectionName: StoreCollectionName,
                     idExistsMessage: 'store exists'
                 }
             },
@@ -66,8 +63,7 @@ module.exports = {
             ],
             handler: {
                 crudUpdate: {
-                    collectionName: StoreSchema.collectionName,
-                    schema: StoreSchema.schema,
+                    collectionName: StoreCollectionName,
                     idPath: 'params.id',
                     notFoundMessage: 'Store not found'
                 }
@@ -83,8 +79,7 @@ module.exports = {
         config: {
             handler: {
                 crudRemove: {
-                    collectionName: StoreSchema.collectionName,
-                    schema: StoreSchema.schema,
+                    collectionName: StoreCollectionName,
                     idPath: 'params.id'
                 }
             }

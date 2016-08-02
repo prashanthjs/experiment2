@@ -51,3 +51,8 @@ declare module 'deepmerge' {
     var _temp:any;
     export = _temp;
 }
+
+declare module 'bcryptjs' {
+    var _temp:any;
+    export = _temp;
+}

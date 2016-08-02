@@ -34,7 +34,7 @@ class CrudCoreHandler {
     getModel():DocumentService.IDocumentService {
         if (!this.model) {
             const documentServiceFactory:DocumentServiceFactory.IDocumentServiceFactory = this.server.settings.app.services.documentServiceFactory;
-            this.model = documentServiceFactory.getDocumentService(this.options.collectionName, this.options.schema);
+            this.model = documentServiceFactory.getDocumentService(this.options.collectionName);
         }
         return this.model;
     }

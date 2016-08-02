@@ -1,5 +1,5 @@
-const StoreSchema = require('../schema/store.schema');
 const StorePayloadValidator = require('./payload.validation');
+const StoreCollectionName = 'store';
 
 export = {
     getAllStores: {
@@ -8,8 +8,7 @@ export = {
         config: {
             handler: {
                 crudGetAll: {
-                    collectionName: StoreSchema.collectionName,
-                    schema: StoreSchema.schema,
+                    collectionName: StoreCollectionName,
                 }
             },
             plugins: {
@@ -30,8 +29,7 @@ export = {
         config: {
             handler: {
                 crudGet: {
-                    collectionName: StoreSchema.collectionName,
-                    schema: StoreSchema.schema,
+                    collectionName: StoreCollectionName,
                     idPath: 'params.id',
                     notFoundMessage: 'Store not found'
                 }
@@ -47,8 +45,7 @@ export = {
             ],
             handler: {
                 crudCreate: {
-                    collectionName: StoreSchema.collectionName,
-                    schema: StoreSchema.schema,
+                    collectionName: StoreCollectionName,
                     idExistsMessage: 'store exists'
 
                 }
@@ -67,8 +64,7 @@ export = {
             ],
             handler: {
                 crudUpdate: {
-                    collectionName: StoreSchema.collectionName,
-                    schema: StoreSchema.schema,
+                    collectionName: StoreCollectionName,
                     idPath: 'params.id',
                     notFoundMessage: 'Store not found'
                 }
@@ -84,8 +80,7 @@ export = {
         config: {
             handler: {
                 crudRemove: {
-                    collectionName: StoreSchema.collectionName,
-                    schema: StoreSchema.schema,
+                    collectionName: StoreCollectionName,
                     idPath: 'params.id'
                 }
             }

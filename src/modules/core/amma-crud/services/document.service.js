@@ -3,13 +3,7 @@ const Mongoose = require('mongoose');
 class DocumentService {
     getModel() {
         if (!this.model) {
-            const names = Mongoose.modelNames();
-            if (names.indexOf(this.collectionName) == -1) {
-                this.model = Mongoose.model(this.collectionName, this.schema);
-            }
-            else {
-                this.model = Mongoose.model(this.collectionName);
-            }
+            this.model = Mongoose.model(this.collectionName);
         }
         return this.model;
     }
@@ -43,9 +37,6 @@ class DocumentService {
     }
     setCollectionName(collectionName) {
         this.collectionName = collectionName;
-    }
-    setSchema(schema) {
-        this.schema = schema;
     }
     setDbParser(dbParser) {
         this.dbParser = dbParser;

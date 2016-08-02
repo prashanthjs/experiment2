@@ -1,7 +1,5 @@
 "use strict";
 const _ = require('lodash');
-const Mongoose = require('mongoose');
-const Timestamps = require('mongoose-timestamp');
 const MongooseValidator = require('mongoose-validator');
 const addressSchema = require('../../../common/schema/address.schema');
 const common = require('../../../common/schema/common.schema');
@@ -45,9 +43,4 @@ let schemaJson = {
     }
 };
 schemaJson = _.merge(schemaJson, common);
-const schema = new Mongoose.Schema(schemaJson);
-schema.plugin(Timestamps);
-module.exports = {
-    collectionName: 'store',
-    schema: schema
-};
+module.exports = schemaJson;

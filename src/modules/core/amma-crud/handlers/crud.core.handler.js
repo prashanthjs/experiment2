@@ -19,7 +19,7 @@ class CrudCoreHandler {
     getModel() {
         if (!this.model) {
             const documentServiceFactory = this.server.settings.app.services.documentServiceFactory;
-            this.model = documentServiceFactory.getDocumentService(this.options.collectionName, this.options.schema);
+            this.model = documentServiceFactory.getDocumentService(this.options.collectionName);
         }
         return this.model;
     }
