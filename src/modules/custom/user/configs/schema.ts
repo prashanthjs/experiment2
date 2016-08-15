@@ -80,6 +80,10 @@ let schemaJson = {
             }
         }
     },
+    profilePicToken: {
+        type: String,
+        require: false
+    },
     address: addressSchema
 };
 

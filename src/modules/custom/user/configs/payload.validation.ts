@@ -7,16 +7,17 @@ let createPayload = {
         _id: Joi.string().alphanum().required().min(2),
         firstName: Joi.string().required(),
         lastName: Joi.string().required(),
-        middleName: Joi.string().optional(),
+        middleName: Joi.string().empty('').optional(),
         password: Joi.string().required(),
         email: Joi.string().email().required(),
         contactNumber: Joi.string().required(),
-        dob: Joi.date().format('YYYY-MM-DD').optional(),
+        dob: Joi.date().optional(),
         userGroup: Joi.string().required(),
         gender: Joi.any().tags(['male', 'female', 'other']),
         isLocked: Joi.boolean().optional(),
         isActive: Joi.boolean().optional(),
         address: Joi.object().keys(addressValidation),
+        profilePicToken: Joi.string().empty().optional(),
         available: Joi.object().keys({
             store: Joi.object().keys({
                 name: Joi.string().required(),
@@ -29,19 +30,25 @@ let updatePayload = {
     _id: Joi.string().alphanum().required().min(2),
     firstName: Joi.string().required(),
     lastName: Joi.string().required(),
-    middleName: Joi.string().optional(),
+    middleName: Joi.string().empty('').optional(),
     email: Joi.string().email().required(),
     contactNumber: Joi.string().required(),
-    dob: Joi.date().format('YYYY-MM-DD').optional(),
+    dob: Joi.date().optional(),
     userGroup: Joi.string().required(),
     gender: Joi.any().tags(['male', 'female', 'other']),
     isLocked: Joi.boolean().optional(),
     isActive: Joi.boolean().optional(),
-    address: Joi.object().keys(addressValidation)
+    address: Joi.object().keys(addressValidation),
+    profilePicToken: Joi.string().empty().optional(),
+    available: Joi.object().keys({
+        store: Joi.object().keys({
+            name: Joi.string().required(),
+            availableToChildren: Joi.boolean().optional()
+        }).required()
+    }).required()
 };
 
 let changePasswordValidation = {
-    _id: Joi.string().alphanum().required().min(2),
     password: Joi.string().required()
 };
 

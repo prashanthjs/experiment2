@@ -21,17 +21,7 @@ class StoreDbService implements IStoreDbService {
     protected model:Mongoose.Model<Mongoose.Document>;
 
     getModel():Mongoose.Model<Mongoose.Document> {
-        if (!this.model) {
-            const names = Mongoose.modelNames();
-            const collectionName = Schema.collectionName;
-            const schema = Schema.schema;
-            if (names.indexOf(collectionName) == -1) {
-                this.model = Mongoose.model<Mongoose.Document>(collectionName, schema);
-            } else {
-                this.model = Mongoose.model<Mongoose.Document>(collectionName);
-            }
-        }
-        return this.model;
+        return Mongoose.model<Mongoose.Document>('store');
     }
 
     findById(id:string, projections:string|Object, next:ICallback):void {

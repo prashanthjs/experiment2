@@ -17,5 +17,13 @@ export = {
                 methodName: 'userEmailValidator'
             }
         }
+    },
+    userChangePasswordController: {
+        cls: require('../services/user.change.password.controller').default,
+        methods: {
+            userChangePasswordAction: {
+                methodName: 'changePasswordAction'
+            }
+        }
     }
 };

@@ -62,7 +62,6 @@ module.exports = {
         path: '/users/{id}',
         config: {
             pre: [
-                { method: 'userEncryptPasswordRequestHandler' },
                 { method: 'userEmailValidator(payload._id, payload.email)' }
             ],
             handler: {
@@ -88,5 +87,24 @@ module.exports = {
                 }
             }
         }
-    }
+    },
+    changePasswordUser: {
+        method: 'PUT',
+        path: '/users/{id}/change-password',
+        config: {
+            pre: [
+                { method: 'userEncryptPasswordRequestHandler' },
+            ],
+            handler: {
+                crudUpdate: {
+                    collectionName: UserCollectionName,
+                    idPath: 'params.id',
+                    notFoundMessage: 'User not found'
+                }
+            },
+            validate: {
+                payload: UserPayloadValidator.changePasswordValidation
+            }
+        }
+    },
 };

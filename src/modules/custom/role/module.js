@@ -1,6 +1,6 @@
-class UserGroupModule {
+class RoleModule {
     static getConfig() {
         return require('./configs/index');
     }
 }
-module.exports = UserGroupModule;
+module.exports = RoleModule;

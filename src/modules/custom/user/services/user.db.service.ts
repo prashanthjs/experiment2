@@ -19,5 +19,15 @@ class UserDbService {
         return this.getModel().findOne({email: email}, projections, next);
     }
 
+    findByIdAndUpdatePassword(id:string, password:string, next:(err?:any, result?:any) => any):void {
+        this.getModel().findById(id, (err:any, result:any) => {
+            if (err || !result) {
+                next('User not found');
+            }
+            result.password = password;
+            result.save(next);
+        });
+    }
+
 }
 export default UserDbService;

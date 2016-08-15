@@ -78,6 +78,10 @@ let schemaJson = {
             }
         }
     },
+    profilePicToken: {
+        type: String,
+        require: false
+    },
     address: addressSchema
 };
 schemaJson = _.merge(schemaJson, common);
