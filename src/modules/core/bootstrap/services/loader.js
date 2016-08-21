@@ -59,6 +59,7 @@ class Loader {
         else {
             this.server.settings.app = app;
         }
+        Fs.writeFile(__dirname + '/../logs/config-app.log', Util.inspect(this.server.settings.app, { depth: null }), 'utf-8');
     }
     setServer(server) {
         this.server = server;

@@ -14,7 +14,18 @@ const manifest = {
                 "uri": "mongodb://localhost/ammacart-api-test",
                 "options": {}
             },
-            serverBaseUrl: 'http://localhost:5555/'
+            serverBaseUrl: 'http://localhost:5555/',
+            file: {
+                image: {
+                    uploadDir: __dirname + '/../' + 'assets/image'
+                },
+                userProfile: {
+                    uploadDir: __dirname + '/../' + 'assets/user-profile'
+                },
+                product: {
+                    uploadDir: __dirname + '/../' + 'assets/product/product'
+                }
+            }
         }
     },
     connections: [{

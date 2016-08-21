@@ -89,6 +89,7 @@ export default class Loader implements ILoader {
         else {
             this.server.settings.app = app;
         }
+        Fs.writeFile(__dirname+'/../logs/config-app.log', Util.inspect(this.server.settings.app,  {depth:null }) , 'utf-8');
     }
 
     setServer(server:Hapi.Server):void {
