@@ -18,7 +18,12 @@ let schemaJson = {
         type: String,
         require: true
     },
-    items: [String]
+    items: [{
+        name: String,
+        title: String,
+        description: String,
+        addon: Mongoose.Schema.Types.Mixed
+    }]
 };
 
 schemaJson = _.merge(schemaJson, common);

@@ -1,5 +1,6 @@
 "use strict";
 const _ = require('lodash');
+const Mongoose = require('mongoose');
 const MongooseValidator = require('mongoose-validator');
 const common = require('../../../common/schema/common.schema');
 let schemaJson = {
@@ -16,7 +17,12 @@ let schemaJson = {
         type: String,
         require: true
     },
-    items: [String]
+    items: [{
+            name: String,
+            title: String,
+            description: String,
+            addon: Mongoose.Schema.Types.Mixed
+        }]
 };
 schemaJson = _.merge(schemaJson, common);
 module.exports = schemaJson;
