@@ -18,9 +18,14 @@ let schemaJson = {
         require: true
     },
     items: [{
-            name: String,
+            _id: {
+                type: String,
+                unique: true,
+                require: true
+            },
             title: String,
             description: String,
+            imageToken: String,
             addon: Mongoose.Schema.Types.Mixed
         }]
 };

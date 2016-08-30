@@ -25,6 +25,9 @@ const manifest = {
                 },
                 product: {
                     uploadDir: __dirname + '/../' + 'assets/product/product'
+                },
+                featureItem: {
+                    uploadDir: __dirname + '/../' + 'assets/feature-item'
                 }
             }
 
