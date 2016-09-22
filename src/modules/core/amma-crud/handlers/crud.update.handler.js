@@ -3,7 +3,7 @@ const Boom = require('boom');
 const HandlerSchema = require('../schema/handler.schema');
 const CrudCoreHandler = require('./crud.core.handler');
 const ObjectPath = require('object-path');
-class CrudCreateHandler extends CrudCoreHandler.default {
+class CrudUpdateHandler extends CrudCoreHandler.default {
     constructor(...args) {
         super(...args);
         this.defaultNotFoundMessage = 'Not found';
@@ -11,6 +11,7 @@ class CrudCreateHandler extends CrudCoreHandler.default {
             const model = this.getModel();
             const payload = request.payload;
             const id = ObjectPath.get(request, this.options.idPath, null);
+            payload._id = id;
             model.findById(id, this.options.projections, (err, result) => {
                 if (err) {
                     reply(Boom.badImplementation(err));
@@ -48,4 +49,4 @@ class CrudCreateHandler extends CrudCoreHandler.default {
     }
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = CrudCreateHandler;
+exports.default = CrudUpdateHandler;

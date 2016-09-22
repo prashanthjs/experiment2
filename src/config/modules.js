@@ -11,5 +11,6 @@ module.exports = {
     'category': __dirname + '/../modules/custom/category',
     'product': __dirname + '/../modules/custom/product/product',
     'tag': __dirname + '/../modules/custom/product/tag',
-    'feature': __dirname + '/../modules/custom/product/feature'
+    'feature': __dirname + '/../modules/custom/product/feature',
+    'product-order': __dirname + '/../modules/custom/product/product-order'
 };

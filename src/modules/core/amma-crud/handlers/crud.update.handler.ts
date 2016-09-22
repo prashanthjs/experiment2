@@ -23,7 +23,7 @@ interface IOptions extends CrudCoreHandler.IOptions {
     notFoundMessage?: string;
 }
 
-class CrudCreateHandler extends CrudCoreHandler.default {
+class CrudUpdateHandler extends CrudCoreHandler.default {
 
     protected options:IOptions;
     private defaultNotFoundMessage = 'Not found';
@@ -33,7 +33,7 @@ class CrudCreateHandler extends CrudCoreHandler.default {
         const model = this.getModel();
         const payload:any = request.payload;
         const id = ObjectPath.get(request, this.options.idPath, null);
-
+        payload._id = id;
         model.findById(id, this.options.projections, (err?:any, result?:any):any => {
             if (err) {
                 reply(Boom.badImplementation(err));
@@ -75,4 +75,4 @@ class CrudCreateHandler extends CrudCoreHandler.default {
 
 
 }
-export default CrudCreateHandler;
+export default CrudUpdateHandler;

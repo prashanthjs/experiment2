@@ -63,7 +63,7 @@ let schemaJson = {
             min: {
                 type: Number,
                 require: true,
-                'default': 0
+                'default': 1
             },
             max: {
                 type: Number,
@@ -80,7 +80,7 @@ let schemaJson = {
 
     },
     features: [String],
-    productOption: {
+    productOptions: {
         options: [String],
         combinations: [{
             name: {
