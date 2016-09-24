@@ -12,5 +12,6 @@ export = {
     'product': __dirname+'/../modules/custom/product/product',
     'tag': __dirname+'/../modules/custom/product/tag',
     'feature': __dirname+'/../modules/custom/product/feature',
-    'product-order': __dirname+'/../modules/custom/product/product-order'
+    'product-order': __dirname+'/../modules/custom/product/product-order',
+    'product-order-status': __dirname+'/../modules/custom/product/product-order-status'
 };

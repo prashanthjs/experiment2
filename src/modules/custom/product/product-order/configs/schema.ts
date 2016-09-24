@@ -19,6 +19,7 @@ let schemaJson = {
     store: {
         name: String,
         email: String,
+        contactNumber: String,
         _id: String
     },
     address: {
@@ -78,12 +79,43 @@ let schemaJson = {
     }],
 
     status: String,
+    notes: {
+        customer: String,
+        staff: String
+    },
     totalPrice: {
         sell: Number,
         cost: Number,
         list: Number,
     },
-    referenceNumber: String
+    referenceNumber: String,
+    payment: [{
+        _id: String,
+        title: String,
+        reference: String,
+        amount: Number,
+        notes: {
+            customer: String,
+            staff: String
+        },
+        createdAt: {
+            type: Date,
+            'default': Date.now
+        }
+    }],
+    shipping: [{
+        _id: String,
+        title: String,
+        trackingNumber: String,
+        notes: {
+            customer: String,
+            staff: String
+        },
+        createdAt: {
+            type: Date,
+            'default': Date.now
+        }
+    }]
 };
 
 schemaJson = _.merge(schemaJson, common);

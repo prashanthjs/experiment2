@@ -4,6 +4,7 @@ const commonValidation = require('../../../common/validation/common.validation')
 const addressValidation = require('../../../common/validation/address.validation');
 
 let createPayload = {
+    _id: Joi.string().optional(),
     user: Joi.object().required().keys({
         name: Joi.object().required().keys({
             firstName: Joi.string().alphanum().required(),
@@ -15,11 +16,7 @@ let createPayload = {
         _id: Joi.string().alphanum().optional(),
     }),
     store: Joi.object().required().keys({
-        name: Joi.object().required().keys({
-            firstName: Joi.string().alphanum().required(),
-            middleName: Joi.string().alphanum().empty('').optional(),
-            lastName: Joi.string().alphanum().required(),
-        }),
+        name: Joi.string().required(),
         email: Joi.string().email().required(),
         contactNumber: Joi.string().alphanum().empty('').optional(),
         _id: Joi.string().alphanum().optional(),
@@ -63,7 +60,12 @@ let createPayload = {
                 cost: Joi.number().optional(),
                 list: Joi.number().optional()
             }).required(),
-        })).optional()
+        })).optional(),
+        totalPrice: Joi.object().keys({
+            sell: Joi.number().optional(),
+            cost: Joi.number().optional(),
+            list: Joi.number().optional()
+        }).optional()
     })).required(),
     outItems: Joi.array().items(Joi.object().keys({
         _id: Joi.string().empty('').optional(),
@@ -75,7 +77,37 @@ let createPayload = {
         }).required(),
     })).optional(),
     status: Joi.string().required(),
-    referenceNumber: Joi.string().required()
+    referenceNumber: Joi.string().required(),
+    totalPrice: Joi.object().keys({
+        sell: Joi.number().optional(),
+        cost: Joi.number().optional(),
+        list: Joi.number().optional()
+    }).optional(),
+    notes: Joi.object().keys({
+        customer: Joi.string().empty('').optional(),
+        staff: Joi.string().empty('').optional(),
+    }).optional(),
+    payment: Joi.array().items(Joi.object().keys({
+        _id: Joi.string().empty('').optional(),
+        title: Joi.string().empty('').optional(),
+        reference: Joi.string().empty('').optional(),
+        amount: Joi.number().optional(),
+        createdAt: Joi.date().optional(),
+        notes: Joi.object().keys({
+            customer: Joi.string().empty('').optional(),
+            staff: Joi.string().empty('').optional(),
+        }).optional(),
+    })).optional(),
+    shipping: Joi.array().items(Joi.object().keys({
+        _id: Joi.string().empty('').optional(),
+        title: Joi.string().empty('').optional(),
+        trackingNumber: Joi.string().empty('').optional(),
+        createdAt: Joi.date().optional(),
+        notes: Joi.object().keys({
+            customer: Joi.string().empty('').optional(),
+            staff: Joi.string().empty('').optional(),
+        }).optional(),
+    })).optional()
 };
 
 let updatePayload = createPayload;
