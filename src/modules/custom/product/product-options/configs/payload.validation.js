@@ -18,7 +18,8 @@ let createPayload = {
         description: Joi.string().empty().optional()
     })),
 };
-let updatePayload = createPayload;
+let updatePayload = _.clone(createPayload);
+delete updatePayload._id;
 _.merge(updatePayload, commonValidation);
 _.merge(createPayload, commonValidation);
 module.exports = {

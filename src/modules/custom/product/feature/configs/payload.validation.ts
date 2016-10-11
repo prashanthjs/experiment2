@@ -1,5 +1,6 @@
 import Joi = require('joi');
 import _ = require('lodash');
+import ObjectPath = require('object-path');
 const commonValidation = require('../../../common/validation/common.validation');
 
 let createPayload = {
@@ -13,7 +14,8 @@ let createPayload = {
     })),
 };
 
-let updatePayload = createPayload;
+let updatePayload = _.clone(createPayload);
+ObjectPath.del(updatePayload,'_id');
 
 _.merge(updatePayload, commonValidation);
 _.merge(createPayload, commonValidation);

@@ -1,6 +1,7 @@
 "use strict";
 const Joi = require('joi');
 const _ = require('lodash');
+const ObjectPath = require('object-path');
 const commonValidation = require('../../../common/validation/common.validation');
 let createPayload = {
     _id: Joi.string().alphanum().required().min(2),
@@ -12,7 +13,8 @@ let createPayload = {
         description: Joi.string().empty().optional()
     })),
 };
-let updatePayload = createPayload;
+let updatePayload = _.clone(createPayload);
+ObjectPath.del(updatePayload, '_id');
 _.merge(updatePayload, commonValidation);
 _.merge(createPayload, commonValidation);
 module.exports = {

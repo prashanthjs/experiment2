@@ -35,7 +35,7 @@ class EventLoader implements IEventLoader {
         const type = event.type;
         Hoek.assert(typeof cls[methodName] === 'function', 'Invalid event handler');
         const func:any = ObjectPath.get(cls, methodName);
-        this.server.on(type, func);
+        this.server.ext(type, func);
     }
 
     setServer(server:Hapi.Server):void {

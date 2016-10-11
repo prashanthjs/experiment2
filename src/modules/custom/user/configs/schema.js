@@ -64,7 +64,7 @@ let schemaJson = {
     },
     isActive: {
         type: Boolean,
-        'default': true
+        'default': false
     },
     available: {
         store: {

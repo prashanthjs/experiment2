@@ -8,12 +8,8 @@ let createPayload = {
     roles: Joi.array().items(Joi.string()).required(),
     isLocked: Joi.boolean()
 };
-let updatePayload = {
-    _id: Joi.string().alphanum().required().min(2),
-    title: Joi.string().required(),
-    roles: Joi.array().items(Joi.string()).required(),
-    isLocked: Joi.boolean(),
-};
+let updatePayload = _.clone(createPayload);
+delete updatePayload._id;
 _.merge(updatePayload, commonValidation);
 _.merge(createPayload, commonValidation);
 module.exports = {
