@@ -4,7 +4,7 @@ class RoleController {
         this.getRolesAction = (request, reply) => {
             const roles = this.getRoleService().getRoles();
             const res = {
-                results: roles,
+                result: roles,
                 meta: {
                     total: roles.length
                 }

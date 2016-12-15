@@ -4,8 +4,8 @@ const HandlerSchema = require('../schema/handler.schema');
 const CrudCoreHandler = require('./crud.core.handler');
 const ObjectPath = require('object-path');
 class CrudGetHandler extends CrudCoreHandler.default {
-    constructor(...args) {
-        super(...args);
+    constructor() {
+        super(...arguments);
         this.defaultNotFoundMessage = 'Not found';
         this.handler = (request, reply) => {
             const model = this.getModel();

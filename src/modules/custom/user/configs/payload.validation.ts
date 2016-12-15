@@ -7,17 +7,16 @@ let createPayload = {
     _id: Joi.string().alphanum().required().min(2),
     firstName: Joi.string().required(),
     lastName: Joi.string().required(),
-    middleName: Joi.string().empty('').optional(),
+    middleName: Joi.string().optional().allow(['', null]),
     password: Joi.string().required(),
     email: Joi.string().email().required(),
     contactNumber: Joi.string().required(),
-    dob: Joi.date().optional(),
+    dob: Joi.date().optional().allow(['', null]),
     userGroup: Joi.string().required(),
     gender: Joi.any().tags(['male', 'female', 'other']),
-    isLocked: Joi.boolean().optional(),
     isActive: Joi.boolean().optional(),
     address: Joi.object().keys(addressValidation),
-    profilePicToken: Joi.string().empty().optional(),
+    profilePic: Joi.string().optional().allow(['', null]),
     available: Joi.object().keys({
         store: Joi.object().keys({
             name: Joi.string().required(),
@@ -28,6 +27,7 @@ let createPayload = {
 
 let updatePayload = _.clone(createPayload);
 delete updatePayload._id;
+delete updatePayload.password;
 
 
 let changePasswordValidation = {

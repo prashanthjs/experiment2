@@ -9,7 +9,7 @@ class RoleController {
     getRolesAction = (request:Hapi.IRequestHandler<Hapi.Request>, reply:Hapi.IReply) => {
         const roles = this.getRoleService().getRoles();
         const res = {
-            results: roles,
+            result: roles,
             meta: {
                 total: roles.length
             }

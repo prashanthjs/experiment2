@@ -33,6 +33,7 @@ let schemaJson = {
     parent: String,
     address: addressSchema,
     description: String,
+    logo: String,
     isActive: {
         type: Boolean,
         'default': true

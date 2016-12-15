@@ -5,8 +5,7 @@ const commonValidation = require('../../common/validation/common.validation');
 let createPayload = {
     _id: Joi.string().alphanum().required().min(2),
     title: Joi.string().required(),
-    roles: Joi.array().items(Joi.string()).required(),
-    isLocked: Joi.boolean()
+    roles: Joi.array().items(Joi.string()).required()
 };
 let updatePayload = _.clone(createPayload);
 delete updatePayload._id;

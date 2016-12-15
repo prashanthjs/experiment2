@@ -43,6 +43,7 @@ class DbParser {
             else {
                 this.filter = this.parseAndReturnFilters(filters);
             }
+            console.log(this.filter);
         }
         this.sort = {};
         if (options.sort) {
@@ -91,7 +92,9 @@ class DbParser {
             tempSorts = sorts;
         }
         for (let i = 0; i < tempSorts.length; i++) {
-            ret[tempSorts[i].field] = tempSorts[i].dir;
+            if (tempSorts[i].dir) {
+                ret[tempSorts[i].field] = tempSorts[i].dir;
+            }
         }
         return ret;
     }

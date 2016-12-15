@@ -4,8 +4,8 @@ const HandlerSchema = require('../schema/handler.schema');
 const CrudCoreHandler = require('./crud.core.handler');
 const Async = require('async');
 class CrudGetAllHandler extends CrudCoreHandler.default {
-    constructor(...args) {
-        super(...args);
+    constructor() {
+        super(...arguments);
         this.handler = (request, reply) => {
             const model = this.getModel();
             Async.series({

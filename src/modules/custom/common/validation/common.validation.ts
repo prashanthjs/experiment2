@@ -1,4 +1,4 @@
 import Joi = require('joi');
 module.exports = {
-    additional: Joi.object()
+    addon: Joi.object().optional().allow(null)
 };

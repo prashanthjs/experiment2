@@ -8,13 +8,12 @@ let createPayload = {
     title: Joi.string().required(),
     email: Joi.string().email().required(),
     contactNumber: Joi.string().optional(),
-    parent: Joi.string().allow('').optional(),
-    website: Joi.string().uri(),
+    parent: Joi.string().allow(['',null]).optional(),
+    website: Joi.string().uri().allow(['',null]).optional(),
     address: Joi.object().keys(addressValidation),
-    description: Joi.string(),
-    logoToken: Joi.string().optional(),
-    isActive: Joi.boolean(),
-    isLocked: Joi.boolean()
+    description: Joi.string().allow(['',null]).optional(),
+    logo: Joi.string().allow(['',null]).optional(),
+    isActive: Joi.boolean()
 };
 
 let updatePayload = _.clone(createPayload);

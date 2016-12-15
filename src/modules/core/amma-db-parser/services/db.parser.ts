@@ -33,27 +33,27 @@ export interface IDbParser {
     sort: any;
     filter: any;
     skip: number;
-    parse(options:IOptions): void;
-    parseAndReturnFilters(filters:IFilters[] | IFilters, logic?:string): Object;
-    parseAndReturnFilter(filter:IFilter): Object;
-    parseAndReturnSort(sorts:ISort[] | ISort): Object;
-    getParsedObject(field:string): any;
-    getType(field:string): string;
-    parseAndReturnValue(field:string, value:any, operator?:string): any;
+    parse(options: IOptions): void;
+    parseAndReturnFilters(filters: IFilters[] | IFilters, logic?: string): Object;
+    parseAndReturnFilter(filter: IFilter): Object;
+    parseAndReturnSort(sorts: ISort[] | ISort): Object;
+    getParsedObject(field: string): any;
+    getType(field: string): string;
+    parseAndReturnValue(field: string, value: any, operator?: string): any;
 }
 
 export class DbParser implements IDbParser {
 
-    public page:number;
-    public pageSize:number;
-    public sort:any;
-    public filter:any;
-    public skip:number;
+    public page: number;
+    public pageSize: number;
+    public sort: any;
+    public filter: any;
+    public skip: number;
 
-    constructor(public schema?:Mongoose.Schema) {
+    constructor(public schema?: Mongoose.Schema) {
     }
 
-    public parse(options:IOptions):void {
+    public parse(options: IOptions): void {
         this.page = 1;
         if (options.page) {
             let page = options.page;
@@ -90,6 +90,8 @@ export class DbParser implements IDbParser {
             } else {
                 this.filter = this.parseAndReturnFilters(filters);
             }
+
+            console.log(this.filter);
         }
         this.sort = {};
         if (options.sort) {
@@ -103,7 +105,7 @@ export class DbParser implements IDbParser {
 
     }
 
-    public parseAndReturnFilters(filters:IFilters[]|IFilters, logic = 'and'):Object {
+    public parseAndReturnFilters(filters: IFilters[]|IFilters, logic = 'and'): Object {
         let ret = {};
         let tempFilters = [];
         if (!(filters instanceof Array)) {
@@ -125,13 +127,13 @@ export class DbParser implements IDbParser {
         return ret;
     }
 
-    public parseAndReturnFilter(filter:IFilter):Object {
+    public parseAndReturnFilter(filter: IFilter): Object {
         let temp = {};
         temp[filter.field] = this.parseAndReturnValue(filter.field, filter.value, filter.operator);
         return temp;
     }
 
-    public parseAndReturnSort(sorts:ISort[]|ISort):Object {
+    public parseAndReturnSort(sorts: ISort[]|ISort): Object {
         let ret = {};
         let tempSorts = [];
         if (!(sorts instanceof Array)) {
@@ -141,12 +143,14 @@ export class DbParser implements IDbParser {
             tempSorts = sorts;
         }
         for (let i = 0; i < tempSorts.length; i++) {
-            ret[tempSorts[i].field] = tempSorts[i].dir;
+            if (tempSorts[i].dir) {
+                ret[tempSorts[i].field] = tempSorts[i].dir;
+            }
         }
         return ret;
     }
 
-    public getParsedObject(key:string):any {
+    public getParsedObject(key: string): any {
         let field = this.schema.path(key);
         if (field && field.options) {
             return field.options;
@@ -154,7 +158,7 @@ export class DbParser implements IDbParser {
         return false;
     }
 
-    public getType(field:string):string {
+    public getType(field: string): string {
         let obj = this.getParsedObject(field);
         let type = 'none';
         if (obj) {
@@ -179,7 +183,7 @@ export class DbParser implements IDbParser {
         return type;
     }
 
-    public parseAndReturnValue(field:string, value:any, operator:string = 'eq'):any {
+    public parseAndReturnValue(field: string, value: any, operator: string = 'eq'): any {
         let type = this.getType(field);
         switch (operator) {
             case 'contains':

@@ -62,7 +62,7 @@ export = {
         path: '/users/{id}',
         config: {
             pre: [
-                {method: 'userEmailValidator(payload._id, payload.email)'}
+                {method: 'userEmailValidator(params.id, payload.email)'}
             ],
             handler: {
                 crudUpdate: {

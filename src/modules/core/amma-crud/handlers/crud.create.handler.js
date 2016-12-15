@@ -4,8 +4,8 @@ const HandlerSchema = require('../schema/handler.schema');
 const CrudCoreHandler = require('./crud.core.handler');
 const ObjectPath = require('object-path');
 class CrudCreateHandler extends CrudCoreHandler.default {
-    constructor(...args) {
-        super(...args);
+    constructor() {
+        super(...arguments);
         this.defaultIdExistsMessage = 'Id exists already';
         this.handler = (request, reply) => {
             const model = this.getModel();

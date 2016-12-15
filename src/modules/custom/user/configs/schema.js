@@ -78,7 +78,7 @@ let schemaJson = {
             }
         }
     },
-    profilePicToken: {
+    profilePic: {
         type: String,
         require: false
     },
