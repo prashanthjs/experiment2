@@ -1,10 +1,10 @@
 "use strict";
-const Loader = require('./services/loader');
-const EventLoader = require('./services/event.loader');
-const MethodLoader = require('./services/method.loader');
-const HandlerLoader = require('./services/handler.loader');
-const ServiceLoader = require('./services/service.loader');
-const RouteLoader = require('./services/route.loader');
+const Loader = require("./services/loader");
+const EventLoader = require("./services/event.loader");
+const MethodLoader = require("./services/method.loader");
+const HandlerLoader = require("./services/handler.loader");
+const ServiceLoader = require("./services/service.loader");
+const RouteLoader = require("./services/route.loader");
 const bootstrap = (server, modules, next) => {
     const eventLoader = new EventLoader.default();
     eventLoader.setServer(server);

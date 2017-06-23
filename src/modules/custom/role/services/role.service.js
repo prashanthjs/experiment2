@@ -1,6 +1,7 @@
 "use strict";
-const _ = require('lodash');
-const ObjectPath = require('object-path');
+Object.defineProperty(exports, "__esModule", { value: true });
+const _ = require("lodash");
+const ObjectPath = require("object-path");
 class RoleService {
     constructor() {
         this.setServer = (server) => {
@@ -22,5 +23,4 @@ class RoleService {
         return ObjectPath.get(this.server.settings.app, 'roles', {});
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = RoleService;

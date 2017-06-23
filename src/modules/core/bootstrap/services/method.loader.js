@@ -1,9 +1,10 @@
 "use strict";
-const Joi = require('joi');
-const Hoek = require('hoek');
-const _ = require('lodash');
-const ObjectPath = require('object-path');
-const Schema = require('../schema/schema');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Joi = require("joi");
+const Hoek = require("hoek");
+const _ = require("lodash");
+const ObjectPath = require("object-path");
+const Schema = require("../schema/schema");
 class MethodLoader {
     loadMethods(cls, methodConfigs) {
         cls = Joi.attempt(cls, Joi.object().required(), 'Invalid class supplied');
@@ -26,5 +27,4 @@ class MethodLoader {
         this.server = server;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = MethodLoader;

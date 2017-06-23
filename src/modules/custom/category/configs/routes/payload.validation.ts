@@ -5,9 +5,10 @@ const commonValidation = require('../../../common/validation/common.validation')
 let createPayload = {
     _id: Joi.string().alphanum().required().min(2),
     title: Joi.string().required(),
-    parent: Joi.string().allow('').optional(),
-    description: Joi.string(),
-    isActive: Joi.boolean()
+    parent: Joi.string().allow(['', null]).optional(),
+    description: Joi.string().allow(['', null]).optional(),
+    isActive: Joi.boolean(),
+    images: Joi.array().items(Joi.string())
 };
 
 let updatePayload = _.clone(createPayload);

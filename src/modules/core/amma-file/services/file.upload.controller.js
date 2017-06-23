@@ -1,7 +1,8 @@
 "use strict";
-const Boom = require('boom');
-const ObjectPath = require('object-path');
-const Path = require('path');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Boom = require("boom");
+const ObjectPath = require("object-path");
+const Path = require("path");
 class FileUploadController {
     constructor() {
         this.createFileTokenAction = (request, reply) => {
@@ -78,5 +79,4 @@ class FileUploadController {
         return fileManagerFactory.getInstance(type, token);
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = FileUploadController;

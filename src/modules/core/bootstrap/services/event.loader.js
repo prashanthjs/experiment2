@@ -1,9 +1,10 @@
 "use strict";
-const Joi = require('joi');
-const _ = require('lodash');
-const Hoek = require('hoek');
-const ObjectPath = require('object-path');
-const Schema = require('../schema/schema');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Joi = require("joi");
+const _ = require("lodash");
+const Hoek = require("hoek");
+const ObjectPath = require("object-path");
+const Schema = require("../schema/schema");
 class EventLoader {
     loadEvents(cls, eventConfig) {
         cls = Joi.attempt(cls, Joi.object().required(), 'Invalid class supplied');
@@ -26,5 +27,4 @@ class EventLoader {
         this.server = server;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = EventLoader;

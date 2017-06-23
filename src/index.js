@@ -1,5 +1,6 @@
 "use strict";
-const Glue = require('glue');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Glue = require("glue");
 const Bootstrap = require('./modules/core/bootstrap');
 const options = {
     relativeTo: __dirname

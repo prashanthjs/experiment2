@@ -1,6 +1,7 @@
 "use strict";
-const Joi = require('joi');
-const HandlerSchema = require('../schema/handler.schema');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Joi = require("joi");
+const HandlerSchema = require("../schema/handler.schema");
 class CrudCoreHandler {
     constructor() {
         this.handlerInit = (route, options) => {
@@ -27,5 +28,4 @@ class CrudCoreHandler {
         this.server = server;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = CrudCoreHandler;

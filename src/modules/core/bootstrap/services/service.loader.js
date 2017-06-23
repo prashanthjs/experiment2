@@ -1,9 +1,10 @@
 "use strict";
-const Items = require('items');
-const ObjectPath = require('object-path');
-const Schema = require('../schema/schema');
-const Joi = require('joi');
-const _ = require('lodash');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Items = require("items");
+const ObjectPath = require("object-path");
+const Schema = require("../schema/schema");
+const Joi = require("joi");
+const _ = require("lodash");
 class ServiceLoader {
     constructor() {
         this.servicesKeyPath = 'settings.app.services';
@@ -64,5 +65,4 @@ class ServiceLoader {
         this.handlerLoader = handlerLoader;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = ServiceLoader;

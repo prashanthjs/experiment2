@@ -1,6 +1,7 @@
 "use strict";
-const Joi = require('joi');
-const _ = require('lodash');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Joi = require("joi");
+const _ = require("lodash");
 class RouteLoader {
     setServer(server) {
         this.server = server;
@@ -16,5 +17,4 @@ class RouteLoader {
         this.server.route(routesArray);
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = RouteLoader;

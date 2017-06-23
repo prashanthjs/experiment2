@@ -1,11 +1,12 @@
 "use strict";
-const Schema = require('../schema/schema');
-const Joi = require('joi');
-const DeepMerge = require('deepmerge');
-const _ = require('lodash');
-const Path = require('path');
-const Fs = require('fs');
-const Util = require('util');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Schema = require("../schema/schema");
+const Joi = require("joi");
+const DeepMerge = require("deepmerge");
+const _ = require("lodash");
+const Path = require("path");
+const Fs = require("fs");
+const Util = require("util");
 class Loader {
     init(modules, next) {
         let config = this.loadConfig(modules);
@@ -74,5 +75,4 @@ class Loader {
         return DeepMerge(object1, object2);
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = Loader;

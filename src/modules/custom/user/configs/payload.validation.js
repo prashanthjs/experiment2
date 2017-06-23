@@ -1,6 +1,7 @@
 "use strict";
-const Joi = require('joi');
-const _ = require('lodash');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Joi = require("joi");
+const _ = require("lodash");
 const commonValidation = require('../../common/validation/common.validation');
 const addressValidation = require('../../common/validation/address.validation');
 let createPayload = {

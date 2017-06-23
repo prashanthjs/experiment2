@@ -26,7 +26,6 @@ let schemaJson = {
         },
         title: String,
         description: String,
-        imageToken: String,
         addon: Mongoose.Schema.Types.Mixed
     }]
 };

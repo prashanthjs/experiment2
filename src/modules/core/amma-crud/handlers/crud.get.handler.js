@@ -1,8 +1,9 @@
 "use strict";
-const Boom = require('boom');
-const HandlerSchema = require('../schema/handler.schema');
-const CrudCoreHandler = require('./crud.core.handler');
-const ObjectPath = require('object-path');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Boom = require("boom");
+const HandlerSchema = require("../schema/handler.schema");
+const CrudCoreHandler = require("./crud.core.handler");
+const ObjectPath = require("object-path");
 class CrudGetHandler extends CrudCoreHandler.default {
     constructor() {
         super(...arguments);
@@ -28,5 +29,4 @@ class CrudGetHandler extends CrudCoreHandler.default {
         };
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = CrudGetHandler;

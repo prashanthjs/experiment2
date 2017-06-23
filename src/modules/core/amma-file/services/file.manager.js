@@ -1,8 +1,9 @@
 "use strict";
-const Fs = require('fs-plus');
-const Uuid = require('node-uuid');
-const Path = require('path');
-const ObjectPath = require('object-path');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Fs = require("fs-plus");
+const Uuid = require("node-uuid");
+const Path = require("path");
+const ObjectPath = require("object-path");
 class FileManager {
     createToken() {
         return Uuid.v1();
@@ -163,5 +164,4 @@ class FileManager {
         this._token = value;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = FileManager;

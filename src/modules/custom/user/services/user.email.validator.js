@@ -1,6 +1,7 @@
 "use strict";
-const Boom = require('boom');
-const Joi = require('joi');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Boom = require("boom");
+const Joi = require("joi");
 class UserEmailValidator {
     constructor() {
         this.userEmailValidator = (id, email, next) => {
@@ -26,5 +27,4 @@ class UserEmailValidator {
         return this.server.settings.app.services.userDbService;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = UserEmailValidator;

@@ -1,5 +1,6 @@
 "use strict";
-const ObjectPath = require('object-path');
+Object.defineProperty(exports, "__esModule", { value: true });
+const ObjectPath = require("object-path");
 class RequestFilter {
     constructor() {
         this.setServer = (server) => {
@@ -21,5 +22,4 @@ class RequestFilter {
         };
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = RequestFilter;

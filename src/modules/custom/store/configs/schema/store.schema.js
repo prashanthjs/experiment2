@@ -1,6 +1,7 @@
 "use strict";
-const _ = require('lodash');
-const MongooseValidator = require('mongoose-validator');
+Object.defineProperty(exports, "__esModule", { value: true });
+const _ = require("lodash");
+const MongooseValidator = require("mongoose-validator");
 const addressSchema = require('../../../common/schema/address.schema');
 const common = require('../../../common/schema/common.schema');
 let schemaJson = {

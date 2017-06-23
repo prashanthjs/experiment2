@@ -1,5 +1,6 @@
 "use strict";
-const Async = require('async');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Async = require("async");
 const data = require('../configs/data/store.data.ts');
 class StoreData {
     constructor() {
@@ -33,5 +34,4 @@ class StoreData {
         return this.server.settings.app.services.storeDbService;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = StoreData;

@@ -1,9 +1,10 @@
 "use strict";
-const Mongoose = require('mongoose');
-const Joi = require('joi');
-const _ = require('lodash');
-const Timestamps = require('mongoose-timestamp');
-const ObjectPath = require('object-path');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Mongoose = require("mongoose");
+const Joi = require("joi");
+const _ = require("lodash");
+const Timestamps = require("mongoose-timestamp");
+const ObjectPath = require("object-path");
 class Db {
     constructor() {
         this.setServer = (server) => {
@@ -60,5 +61,4 @@ class Db {
         this.server.settings.app.model[collectionName] = Mongoose.model(collectionName, schema);
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = Db;

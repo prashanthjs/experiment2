@@ -1,5 +1,6 @@
 "use strict";
-const Mongoose = require('mongoose');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Mongoose = require("mongoose");
 class DocumentService {
     getModel() {
         if (!this.model) {
@@ -42,5 +43,4 @@ class DocumentService {
         this.dbParser = dbParser;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = DocumentService;

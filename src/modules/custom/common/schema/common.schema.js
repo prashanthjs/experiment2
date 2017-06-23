@@ -1,5 +1,6 @@
 "use strict";
-const Mongoose = require('mongoose');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Mongoose = require("mongoose");
 module.exports = {
     addon: Mongoose.Schema.Types.Mixed,
     private: {

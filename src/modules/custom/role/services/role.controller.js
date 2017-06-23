@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 class RoleController {
     constructor() {
         this.getRolesAction = (request, reply) => {
@@ -19,5 +20,4 @@ class RoleController {
         return this.server.settings.app.services.roleService;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = RoleController;

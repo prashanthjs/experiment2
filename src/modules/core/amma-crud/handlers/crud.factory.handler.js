@@ -1,9 +1,10 @@
 "use strict";
-const CrudGetAllHandler = require('./crud.get.all.handler');
-const CrudGetHandler = require('./crud.get.handler');
-const CrudCreateHandler = require('./crud.create.handler');
-const CrudRemoveHandler = require('./crud.remove.handler');
-const CrudUpdateHandler = require('./crud.update.handler');
+Object.defineProperty(exports, "__esModule", { value: true });
+const CrudGetAllHandler = require("./crud.get.all.handler");
+const CrudGetHandler = require("./crud.get.handler");
+const CrudCreateHandler = require("./crud.create.handler");
+const CrudRemoveHandler = require("./crud.remove.handler");
+const CrudUpdateHandler = require("./crud.update.handler");
 class CrudFactoryHandler {
     constructor() {
         this.handlerGetAll = (route, options) => {
@@ -36,5 +37,4 @@ class CrudFactoryHandler {
         this.server = server;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = CrudFactoryHandler;

@@ -1,5 +1,6 @@
 "use strict";
-const Joi = require('joi');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Joi = require("joi");
 module.exports = {
     addressLine1: Joi.string().required(),
     addressLine2: Joi.string().optional().allow([null, '']),

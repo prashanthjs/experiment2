@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 class DbParser {
     constructor(schema) {
         this.schema = schema;
@@ -171,5 +172,4 @@ class DbParser {
     }
 }
 exports.DbParser = DbParser;
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = DbParser;

@@ -1,6 +1,7 @@
 "use strict";
-const Joi = require('joi');
-const _ = require('lodash');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Joi = require("joi");
+const _ = require("lodash");
 const commonValidation = require('../../../common/validation/common.validation');
 let createPayload = {
     _id: Joi.string().alphanum().required().min(2),
@@ -12,10 +13,10 @@ let createPayload = {
         cost: Joi.number().optional(),
         list: Joi.number().optional()
     }),
-    promoText: Joi.string().empty().optional(),
-    shortDescription: Joi.string().empty().optional(),
-    description: Joi.string().empty().optional(),
-    imageToken: Joi.string().empty().optional(),
+    promoText: Joi.string().allow(['', null]).optional(),
+    shortDescription: Joi.string().allow(['', null]).optional(),
+    description: Joi.string().empty(['', null]).optional(),
+    images: Joi.array().items(Joi.string()).optional(),
     inventory: Joi.object().keys({
         stock: Joi.number().required(),
         quantity: Joi.object().keys({
@@ -61,17 +62,11 @@ let createPayload = {
         weight: Joi.number().required(),
         freeShipping: Joi.boolean().optional(),
         box: Joi.object().keys({
-            length: Joi.number().optional(),
+            breadth: Joi.number().optional(),
             width: Joi.number().optional(),
             height: Joi.number().optional()
         })
     }).optional(),
-    quantityDiscounts: Joi.array().items(Joi.object().keys({
-        min: Joi.number().required(),
-        max: Joi.number().required(),
-        isPercentage: Joi.number().optional(),
-        value: Joi.number().required()
-    })).optional(),
     tags: Joi.array().items(Joi.string()).optional(),
     available: Joi.object().keys({
         store: Joi.object().keys({

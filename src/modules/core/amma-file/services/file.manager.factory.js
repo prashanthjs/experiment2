@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const file_manager_1 = require("./file.manager");
 class FileManagerFactory {
     constructor() {
@@ -14,5 +15,4 @@ class FileManagerFactory {
         return fileManager;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = FileManagerFactory;

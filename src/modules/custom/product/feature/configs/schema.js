@@ -1,7 +1,8 @@
 "use strict";
-const _ = require('lodash');
-const Mongoose = require('mongoose');
-const MongooseValidator = require('mongoose-validator');
+Object.defineProperty(exports, "__esModule", { value: true });
+const _ = require("lodash");
+const Mongoose = require("mongoose");
+const MongooseValidator = require("mongoose-validator");
 const common = require('../../../common/schema/common.schema');
 let schemaJson = {
     _id: {
@@ -25,7 +26,6 @@ let schemaJson = {
             },
             title: String,
             description: String,
-            imageToken: String,
             addon: Mongoose.Schema.Types.Mixed
         }]
 };

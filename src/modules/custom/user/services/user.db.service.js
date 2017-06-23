@@ -1,5 +1,6 @@
 "use strict";
-const Mongoose = require('mongoose');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Mongoose = require("mongoose");
 class UserDbService {
     getModel() {
         return Mongoose.model('user');
@@ -17,5 +18,4 @@ class UserDbService {
         });
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = UserDbService;

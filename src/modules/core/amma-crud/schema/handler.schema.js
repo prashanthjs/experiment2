@@ -1,5 +1,6 @@
 "use strict";
-const Joi = require('joi');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Joi = require("joi");
 const CoreHandlerOption = Joi.object({
     collectionName: Joi.string().required(),
 });
@@ -28,7 +29,6 @@ const CoreRemoveOption = Joi.object({
     collectionName: Joi.string().required(),
     idPath: Joi.string().required()
 });
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     CoreHandlerOption: CoreHandlerOption,
     CoreGetAllOption: CoreGetAllOption,

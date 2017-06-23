@@ -1,5 +1,6 @@
 "use strict";
-const DocumentService = require('./document.service');
+Object.defineProperty(exports, "__esModule", { value: true });
+const DocumentService = require("./document.service");
 class DocumentServiceFactory {
     setServer(server) {
         this.server = server;
@@ -16,5 +17,4 @@ class DocumentServiceFactory {
         return documentService;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = DocumentServiceFactory;

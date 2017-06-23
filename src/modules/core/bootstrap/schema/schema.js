@@ -1,5 +1,6 @@
 "use strict";
-const Joi = require('joi');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Joi = require("joi");
 const MethodSchema = Joi.object({
     methodName: Joi.string().required(),
     options: Joi.object()
@@ -20,7 +21,6 @@ const ConfigSchema = Joi.object({
     services: Joi.object(),
     routes: Joi.object()
 });
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     ServiceSchema: ServiceSchema,
     ConfigSchema: ConfigSchema,

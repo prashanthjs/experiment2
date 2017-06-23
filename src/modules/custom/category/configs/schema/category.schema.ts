@@ -19,6 +19,7 @@ let schemaJson = {
         require: true
     },
     parent: String,
+    images: [String],
     description: String,
     isActive: {
         type: Boolean,

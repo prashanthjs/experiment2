@@ -1,6 +1,7 @@
 "use strict";
-const Boom = require('boom');
-const Joi = require('joi');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Boom = require("boom");
+const Joi = require("joi");
 class CategoryValidator {
     constructor() {
         this.categoryValidator = (id, next) => {
@@ -44,5 +45,4 @@ class CategoryValidator {
         return this.server.settings.app.services.categoryDbService;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = CategoryValidator;

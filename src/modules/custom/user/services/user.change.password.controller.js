@@ -1,6 +1,7 @@
 "use strict";
-const Boom = require('boom');
-const ObjectPath = require('object-path');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Boom = require("boom");
+const ObjectPath = require("object-path");
 class UserChangePasswordController {
     constructor() {
         this.changePasswordAction = (request, reply) => {
@@ -24,5 +25,4 @@ class UserChangePasswordController {
         return this.server.settings.app.services.userDbService;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = UserChangePasswordController;

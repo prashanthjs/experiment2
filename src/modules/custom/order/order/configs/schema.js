@@ -1,5 +1,6 @@
 "use strict";
-const _ = require('lodash');
+Object.defineProperty(exports, "__esModule", { value: true });
+const _ = require("lodash");
 const common = require('../../../common/schema/common.schema');
 const addressSchema = require('../../../common/schema/address.schema');
 let schemaJson = {

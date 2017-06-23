@@ -1,5 +1,6 @@
 "use strict";
-const Mongoose = require('mongoose');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Mongoose = require("mongoose");
 const Schema = require('../configs/schema/store.schema');
 class StoreDbService {
     getModel() {
@@ -9,5 +10,4 @@ class StoreDbService {
         this.getModel().findById(id, projections, next);
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = StoreDbService;

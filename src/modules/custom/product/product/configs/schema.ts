@@ -49,10 +49,7 @@ let schemaJson = {
         type: String,
         require: false
     },
-    imageToken: {
-        type: String,
-        require: false
-    },
+    images: [String],
     inventory: {
         stock: {
             type: Number,
@@ -176,7 +173,7 @@ let schemaJson = {
             'default': false
         },
         box: {
-            length: {
+            breadth: {
                 type: Number,
                 require: false,
                 'default': -1

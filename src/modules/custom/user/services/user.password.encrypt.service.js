@@ -1,6 +1,7 @@
 "use strict";
-const Boom = require('boom');
-const Bcrypt = require('bcryptjs');
+Object.defineProperty(exports, "__esModule", { value: true });
+const Boom = require("boom");
+const Bcrypt = require("bcryptjs");
 class UserPasswordEncryptService {
     constructor() {
         this.encryptPasswordRequestHandler = (request, reply) => {
@@ -30,5 +31,4 @@ class UserPasswordEncryptService {
         this.server = server;
     }
 }
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = UserPasswordEncryptService;
